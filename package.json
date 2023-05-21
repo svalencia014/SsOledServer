@@ -2,5 +2,15 @@
   "dependencies": {
     "express": "^4.18.2",
     "gamesense-client": "^2.0.2"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "ssoledserver",
+  "description": "This software provides a REST API that can be used with the [Steelseries Gamesense SDK](https://github.com/SteelSeries/gamesense-sdk)",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }
