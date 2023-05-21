@@ -39,6 +39,29 @@ function bindProgressHandler() {
    * @type {gamesense.GameEventHandler} 
   */
 
-  //* Continue from here
-  //* https://github.com/DaanWet/gamesense-client/blob/master/examples/progressBar.js#L65
+  var functionKeysEventHandler = new gamesense.GameEventHandler(gamesense.DeviceType.RGB_PER_KEY_ZONES, gamesense.RgbPerKeyZone.FUNCTION_KEYS, gradient);
+  functionKeysEventHandler.mode = gamesense.VisualizationMode.PERCENT;
+
+  return client.bindEvent(progressEvent, [functionKeysEventHandler]);
+}
+
+function startProgressUpdates() {
+  setInterval(updateProgress, 200);
+}
+
+function updateProgress() {
+  progressEvent.value = progressEvent.value + 5;
+  if (progressEvent.value > progressEvent.maxValue) {
+    progressEvent.value = progressEvent.minValue;
+  }
+
+  client.sendGameEventUpdate(progressEvent).catch(logError);
+}
+
+/**
+ * Logs error to console.
+ */
+
+function logError(error) {
+  console.error(error);
 }
